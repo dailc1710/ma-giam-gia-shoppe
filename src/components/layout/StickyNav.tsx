@@ -12,9 +12,9 @@ export default function StickyNav() {
 
   return (
     <div className="sticky top-0 z-50 bg-brand shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
-      <div className="flex h-14 items-center justify-between gap-4 px-4">
+      <div className="grid h-14 grid-cols-[1fr_auto_1fr] items-center gap-4 px-4">
         {expanded ? (
-          <div className="flex flex-1 items-center gap-2">
+          <div className="col-span-3 flex items-center gap-2">
             <input
               autoFocus
               type="text"
@@ -37,7 +37,8 @@ export default function StickyNav() {
           </div>
         ) : (
           <>
-            <nav className="flex items-center gap-1 overflow-x-auto">
+            <span />
+            <nav className="flex min-w-0 items-center gap-1 overflow-x-auto">
               {navLinks.map(({ label, href, icon: Icon }) => (
                 <Link
                   key={label}
@@ -53,14 +54,16 @@ export default function StickyNav() {
                 </Link>
               ))}
             </nav>
-            <button
-              type="button"
-              aria-label="Tìm kiếm"
-              onClick={() => setExpanded(true)}
-              className="shrink-0 p-2 text-white"
-            >
-              <Search className="size-[18px]" />
-            </button>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                aria-label="Tìm kiếm"
+                onClick={() => setExpanded(true)}
+                className="shrink-0 p-2 text-white"
+              >
+                <Search className="size-[18px]" />
+              </button>
+            </div>
           </>
         )}
       </div>
